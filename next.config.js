@@ -4,12 +4,6 @@ const { hostname } = require("os");
 const nextConfig = {
   images: {
     remotePatterns: [
-      // {
-      //   protocol: "https",
-      //   hostname: "dine-marketplace-gamma.vercel.app/",
-      //   port: "",
-      //   pathname: "/**",
-      // },
       {
         protocol: "https",
         hostname: "cdn.sanity.io",
