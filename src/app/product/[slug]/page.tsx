@@ -10,18 +10,18 @@ type Props = {
   };
 };
 
-export async function generateStaticParams() {
-  const query = `*[_type == "product"]{
-    slug {
-      current
-    }
-  }`;
-  const res: Productprops[] = await client.fetch(query);
+// export async function generateStaticParams() {
+//   const query = `*[_type == "product"]{
+//     slug {
+//       current
+//     }
+//   }`;
+//   const res: Productprops[] = await client.fetch(query);
 
-  return res.map((product) => ({
-    slug: product.slug.current,
-  }));
-}
+//   return res.map((product) => ({
+//     slug: product.slug.current,
+//   }));
+// }
 export default async function page({ params: { slug } }: Props) {
   const query = `*[_type == "product" && slug.current == $slug][0]{
     ...,
