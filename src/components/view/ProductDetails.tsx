@@ -43,50 +43,6 @@ const ProductDetails: React.FC<Props> = ({ products }) => {
     );
 
     notify(products.name);
-    // =======
-    //   let { cartArray, userData, dispatch } = useContext(cartContext);
-
-    //   const [quantity, setQuantity] = useState(0);
-
-    //   function incrementTheQuantity() {
-    //     // dispatch({ payload: "hi" });
-    //     setQuantity(quantity + 1);
-    //   }
-
-    //   function decrementTheQuantity() {
-    //     if (quantity !== 0) {
-    //       setQuantity(quantity - 1);
-    //     }
-    //   }
-
-    //   const notification = (title: string) => {
-    //     toast.success(` ${quantity} ${title} added to Cart`, {
-    //       position: "top-right",
-    //     });
-    //   };
-    //   const notificationError = (title: string) => {
-    //     toast.success(title, {
-    //       position: "top-right",
-    //     });
-    //   };
-
-    //   function handleAddToCart() {
-    //     // let isExsits = cartArray.some(
-    //     //   (elem: any) => elem.product_id === products._id
-    //     // );
-
-    //     if (userData) {
-    //       let dataToAddInCart = {
-    //         product_id: products._id,
-    //         quantity: quantity,
-    //         user_id: userData.uuid,
-    //       };
-    //       dispatch("updateCart", dataToAddInCart);
-    //       notification(products.name);
-    //     } else {
-    //       notificationError("please login first");
-    //     }
-    // >>>>>>> 15fbce5f202d38cf618133c41601ee8cf5a74117
   }
 
   return (
@@ -152,13 +108,6 @@ const ProductDetails: React.FC<Props> = ({ products }) => {
               <span className='num'>{qty}</span>
               <span className='cursor-pointer select-none px-2 py-[5px] rounded-[50%] ml-2.5 border-2 border-solid border-[black]'>
                 <AiOutlinePlus onClick={incQuantity} />
-              </span>
-              <span className='num'>{qty}</span>
-              <span
-                onClick={decQuantity}
-                className='cursor-pointer select-none px-2 py-[5px] rounded-[50%] ml-2.5 border-2 border-solid border-[black]'
-              >
-                <AiOutlinePlus />
               </span>
             </div>
           </div>

@@ -1,19 +1,8 @@
-<<<<<<< HEAD
-
-=======
->>>>>>> 15fbce5f202d38cf618133c41601ee8cf5a74117
 import { client } from "../../../../sanity/lib/client";
 
 import { Productprops, imagesType, slugType } from "@/types/produts";
 import Wrapper from "@/components/view/Wrapper";
 import ProductDetails from "@/components/view/ProductDetails";
-<<<<<<< HEAD
-import { getAllProduct, getProducts } from "../../../../sanity/sanityUtils";
-=======
-
-import BASE_PATH_API_URL from "@/components/config/BasePath";
-import ContextWrapper from "@/global/context";
->>>>>>> 15fbce5f202d38cf618133c41601ee8cf5a74117
 
 type Props = {
   params: {
@@ -54,11 +43,7 @@ export default async function page({ params: { slug } }: Props) {
   return (
     <section className='bg-[#FCFCFC] min-h-screen  my-32'>
       <Wrapper className='flex flex-col justify-between relative items-center px-4 py-8'>
-<<<<<<< HEAD
         <ProductDetails products={products} qty={0} userId={""} />
-=======
-        <ProductDetails products={products} />
->>>>>>> 15fbce5f202d38cf618133c41601ee8cf5a74117
       </Wrapper>
     </section>
   );

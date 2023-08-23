@@ -5,7 +5,7 @@ import React, { useState } from "react";
 import { CgShoppingCart } from "react-icons/cg";
 
 import { RiCloseLine, RiMenu3Line } from "react-icons/ri";
-import Cart from "./Cart";
+// import Cart from "./Cart";
 
 const MobileMenu = () => {
   const [isNavbarOpen, setisNavbarOpen] = useState(false);
@@ -39,7 +39,7 @@ const MobileMenu = () => {
         <div className='w-full flex justify-center gap-10  bg-white min-h-screen z-10'>
           <nav className='flex justify-center items-center flex-col gap-8'>
             <Link href='/cart'>
-             <Cart/>
+             {/* <Cart/> */}
             </Link>
             <ul className='flex flex-col justify-center items-center gap-8'>
               <Link href='/female'>

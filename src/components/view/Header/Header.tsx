@@ -6,12 +6,11 @@ import Navbar from "./Navbar";
 import SearchBar from "./SearchBar";
 
 import MobileMenu from "./MobileMenu";
-<<<<<<< HEAD
+
 import { CgShoppingCart } from "react-icons/cg";
-import { useState } from "react";
+
 import { useAppSelector } from "@/redux/store";
-=======
->>>>>>> 15fbce5f202d38cf618133c41601ee8cf5a74117
+
 
 const Header = () => {
   const totalItems = useAppSelector((state) => state.cart.totalQuantity);
