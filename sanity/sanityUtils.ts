@@ -12,8 +12,6 @@ export const getFemaleProducts = async () => {
       price,
       "slug": slug.current, 
     image,
-   
-
     }`
       
   );

@@ -12,7 +12,7 @@ const ProductCard = ({ singleProductData }: Props) => {
   return (
     <Link
       key={singleProductData._id}
-      href={`/product/${singleProductData.slug.current}`}
+      href={`product/${singleProductData.slug.current}`}
     >
       <div className='flex flex-col justify-center items-center px-0 py-8  transition-transform duration-[0.5s] ease-[ease] pl-[1.3rem] pr-0 scale-100 hover:scale-110'>
         {" "}
