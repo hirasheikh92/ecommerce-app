@@ -2,12 +2,7 @@ import "./globals.css";
 import { Sora } from "next/font/google";
 import Header from "@/components/view/Header/Header";
 import Footer from "@/components/view/Footer";
-<<<<<<< HEAD
 import ReduxProvider from "@/components/utils/ReduxProvider";
-=======
-import ContextWrapper from "@/global/context";
-import TopLabel from "@/components/view/TopBar";
->>>>>>> 15fbce5f202d38cf618133c41601ee8cf5a74117
 
 const sora = Sora({ subsets: ["latin"] });
 
@@ -22,7 +17,6 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-<<<<<<< HEAD
     <ReduxProvider>
       <html lang='en'>
         <body className={sora.className}>
@@ -32,17 +26,5 @@ export default function RootLayout({
         </body>
       </html>
     </ReduxProvider>
-=======
-    <html lang='en'>
-      <body className={sora.className}>
-        <ContextWrapper>
-          <TopLabel />
-          <Header />
-          <main>{children}</main>
-          <Footer />
-        </ContextWrapper>
-      </body>
-    </html>
->>>>>>> 15fbce5f202d38cf618133c41601ee8cf5a74117
   );
 }

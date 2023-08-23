@@ -1,7 +1,7 @@
-import SignInForm from "@/components/view/SignInForm";
+// import SignInForm from "@/components/view/SignInForm";
 
-const SignIn = () => {
-  return <SignInForm />;
-};
+// const SignIn = () => {
+//   return <SignInForm />;
+// };
 
-export default SignIn;
+// export default SignIn;

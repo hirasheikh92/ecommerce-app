@@ -18,7 +18,6 @@ export interface assetImageType {
 
 export interface Productprops {
     productTypes: any;
-    quantity:number;
     param: any;
     current: any;
     _id: string;

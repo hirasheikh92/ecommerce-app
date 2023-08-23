@@ -1,8 +1,4 @@
 "use client";
-<<<<<<< HEAD
-=======
-
->>>>>>> 15fbce5f202d38cf618133c41601ee8cf5a74117
 import { AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
 import { Button } from "../ui/button";
 import { CgShoppingCart } from "react-icons/cg";
@@ -22,7 +18,6 @@ type Props = {
 };
 
 const ProductDetails: React.FC<Props> = ({ products }) => {
-<<<<<<< HEAD
   const [qty, setqty] = useState(0);
   const dispatch = useDispatch();
 
@@ -48,50 +43,50 @@ const ProductDetails: React.FC<Props> = ({ products }) => {
     );
 
     notify(products.name);
-=======
-  let { cartArray, userData, dispatch } = useContext(cartContext);
+    // =======
+    //   let { cartArray, userData, dispatch } = useContext(cartContext);
 
-  const [quantity, setQuantity] = useState(0);
+    //   const [quantity, setQuantity] = useState(0);
 
-  function incrementTheQuantity() {
-    // dispatch({ payload: "hi" });
-    setQuantity(quantity + 1);
-  }
+    //   function incrementTheQuantity() {
+    //     // dispatch({ payload: "hi" });
+    //     setQuantity(quantity + 1);
+    //   }
 
-  function decrementTheQuantity() {
-    if (quantity !== 0) {
-      setQuantity(quantity - 1);
-    }
-  }
+    //   function decrementTheQuantity() {
+    //     if (quantity !== 0) {
+    //       setQuantity(quantity - 1);
+    //     }
+    //   }
 
-  const notification = (title: string) => {
-    toast.success(` ${quantity} ${title} added to Cart`, {
-      position: "top-right",
-    });
-  };
-  const notificationError = (title: string) => {
-    toast.success(title, {
-      position: "top-right",
-    });
-  };
+    //   const notification = (title: string) => {
+    //     toast.success(` ${quantity} ${title} added to Cart`, {
+    //       position: "top-right",
+    //     });
+    //   };
+    //   const notificationError = (title: string) => {
+    //     toast.success(title, {
+    //       position: "top-right",
+    //     });
+    //   };
 
-  function handleAddToCart() {
-    // let isExsits = cartArray.some(
-    //   (elem: any) => elem.product_id === products._id
-    // );
+    //   function handleAddToCart() {
+    //     // let isExsits = cartArray.some(
+    //     //   (elem: any) => elem.product_id === products._id
+    //     // );
 
-    if (userData) {
-      let dataToAddInCart = {
-        product_id: products._id,
-        quantity: quantity,
-        user_id: userData.uuid,
-      };
-      dispatch("updateCart", dataToAddInCart);
-      notification(products.name);
-    } else {
-      notificationError("please login first");
-    }
->>>>>>> 15fbce5f202d38cf618133c41601ee8cf5a74117
+    //     if (userData) {
+    //       let dataToAddInCart = {
+    //         product_id: products._id,
+    //         quantity: quantity,
+    //         user_id: userData.uuid,
+    //       };
+    //       dispatch("updateCart", dataToAddInCart);
+    //       notification(products.name);
+    //     } else {
+    //       notificationError("please login first");
+    //     }
+    // >>>>>>> 15fbce5f202d38cf618133c41601ee8cf5a74117
   }
 
   return (
@@ -148,36 +143,28 @@ const ProductDetails: React.FC<Props> = ({ products }) => {
             <h4>Quantity: </h4>
             <div className='flex'>
               <span
-                onClick={decrementTheQuantity}
+                onClick={decQuantity}
                 className='cursor-pointer select-none px-2 py-[5px] rounded-[50%] bg-[#F1F1F1] mr-2.5 border-2 border-solid border-[#F1F1F1]'
               >
                 <AiOutlineMinus />
               </span>
-<<<<<<< HEAD
+
               <span className='num'>{qty}</span>
               <span className='cursor-pointer select-none px-2 py-[5px] rounded-[50%] ml-2.5 border-2 border-solid border-[black]'>
                 <AiOutlinePlus onClick={incQuantity} />
-=======
-              <span className='num'>{quantity}</span>
+              </span>
+              <span className='num'>{qty}</span>
               <span
-                onClick={incrementTheQuantity}
+                onClick={decQuantity}
                 className='cursor-pointer select-none px-2 py-[5px] rounded-[50%] ml-2.5 border-2 border-solid border-[black]'
               >
                 <AiOutlinePlus />
->>>>>>> 15fbce5f202d38cf618133c41601ee8cf5a74117
               </span>
             </div>
           </div>
           {/* cart */}
           <div className='flex items-center gap-4'>
-<<<<<<< HEAD
             <Button onClick={addToCart} className='text-sm px-5 gap-0 py-0'>
-=======
-            <Button
-              onClick={() => handleAddToCart()}
-              className='text-sm px-5 gap-0 py-0'
-            >
->>>>>>> 15fbce5f202d38cf618133c41601ee8cf5a74117
               <CgShoppingCart className='mr-2  ' size={20} />
               Add to Cart
             </Button>
