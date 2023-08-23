@@ -24,7 +24,6 @@ export default async function Home() {
       <Banner />
       <Event />
       <ProductCarousel productData={response} />
-
       <Feature />
       <NewsLetter />
     </>

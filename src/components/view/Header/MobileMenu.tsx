@@ -2,10 +2,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import React, { useState } from "react";
-import { CgShoppingCart } from "react-icons/cg";
-
 import { RiCloseLine, RiMenu3Line } from "react-icons/ri";
-// import Cart from "./Cart";
+
 
 const MobileMenu = () => {
   const [isNavbarOpen, setisNavbarOpen] = useState(false);
