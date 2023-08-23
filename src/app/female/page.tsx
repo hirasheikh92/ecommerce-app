@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { getFemaleProducts } from "../../../sanity/sanityUtils";
 import { urlForImage } from "../../../sanity/lib/image";
-import { Productprops } from "@/types/produts";
+import { Productprops } from "@/types/products";
 
 const Femalepage = async () => {
   const data: Array<Productprops> = await getFemaleProducts();

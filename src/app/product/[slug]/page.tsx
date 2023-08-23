@@ -1,5 +1,5 @@
 import { client } from "../../../../sanity/lib/client";
-import { Productprops, imagesType, slugType } from "@/types/produts";
+import { Productprops, imagesType, slugType } from "@/types/products";
 import Wrapper from "@/components/view/Wrapper";
 import ProductDetails from "@/components/view/ProductDetails";
 

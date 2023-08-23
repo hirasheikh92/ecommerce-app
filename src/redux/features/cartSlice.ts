@@ -1,4 +1,4 @@
-import { Productprops } from "@/types/produts";
+import { Productprops } from "@/types/products";
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 import { RootState } from "../store"
 import { urlForImage } from "../../../sanity/lib/image";

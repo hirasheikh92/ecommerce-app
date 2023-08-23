@@ -1,5 +1,5 @@
 "use client";
-import { Productprops } from "@/types/produts";
+import { Productprops } from "@/types/products";
 import React, { FC, Component, ReactNode } from "react";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";

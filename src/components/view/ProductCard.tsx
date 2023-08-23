@@ -1,4 +1,4 @@
-import { Productprops } from "@/types/produts";
+import { Productprops } from "@/types/products";
 import Image from "next/image";
 import React, { FC } from "react";
 import { urlForImage } from "../../../sanity/lib/image";

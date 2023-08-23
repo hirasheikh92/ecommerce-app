@@ -2,7 +2,7 @@
 import { AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
 import { Button } from "../ui/button";
 import { CgShoppingCart } from "react-icons/cg";
-import { Productprops } from "@/types/produts";
+import { Productprops } from "@/types/products";
 import Image from "next/image";
 import { urlForImage } from "../../../sanity/lib/image";
 import { useState } from "react";
