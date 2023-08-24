@@ -2,7 +2,7 @@
 import { AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
 import { Button } from "../ui/button";
 import { CgShoppingCart } from "react-icons/cg";
-import { Productprops } from "@/types/products";
+import { CartItem, Productprops } from "@/types/products";
 import Image from "next/image";
 import { urlForImage } from "../../../sanity/lib/image";
 import { useState } from "react";
@@ -19,6 +19,7 @@ type Props = {
 
 const ProductDetails: React.FC<Props> = ({ products }) => {
   const [qty, setqty] = useState(0);
+  const [isLoading, setIsLoading] = useState(false);
   const dispatch = useDispatch();
 
   function incQuantity() {
@@ -35,35 +36,74 @@ const ProductDetails: React.FC<Props> = ({ products }) => {
       position: "top-center",
     });
 
+  const handleRequestData = async () => {
+    const res = await fetch(`/api/cart/${products._id}`);
+    if (!res.ok) {
+      throw new Error("Failed to Fetch Data From API");
+    }
+    const data = await res.json();
+    return data;
+  };
+
   const handleAddToCart = async () => {
-    const res = await fetch(`/api/cart`, {
+    const res = await fetch("/api/cart", {
       method: "POST",
       body: JSON.stringify({
         product_id: products._id,
         quantity: qty,
-        image: urlForImage(products.image).url(),
-        price: products.price,
+        image: urlForImage(products.image[0]).url(),
         product_name: products.name,
-        total_price: products.price * qty,
+        price: products.price,
+        totalPrice: products.price * products.quantity,
       }),
     });
+
+    if (!res.ok) {
+      throw new Error("Failed to add Data");
+    }
   };
 
-  async function addToCart() {
-    toast.promise(handleAddToCart(), {
-      loading: "Adding data to cart",
-      success: "Data added to cart",
-      error: "error data to cart",
-    });
-    dispatch(
-      cartActions.addToCart({
-        product: products,
-        quantity: qty,
-      })
-    );
+  const handleCart = async () => {
+    setIsLoading(true);
+    try {
+      const cartData = await handleRequestData();
+      const existingItem = cartData.cartItems.find(
+        (item: any) => item._id === products._id
+      );
 
-    notify(products.name);
-  }
+      if (existingItem) {
+        const newQuantity = existingItem.quantity + qty;
+        const newPrice = products.price * newQuantity;
+        const res = await fetch(`/api/cart`, {
+          method: "PUT",
+          body: JSON.stringify({
+            product_id: products._id,
+            quantity: newQuantity,
+            price: newPrice,
+          }),
+        });
+
+        if (!res.ok) {
+          throw new Error("Failed to update data");
+        }
+      } else {
+        await handleAddToCart();
+      }
+    } catch (error) {
+      console.log((error as { message: string }).message);
+    }
+
+    setIsLoading(false);
+  };
+
+  const addtoCart = () => {
+    toast.promise(handleCart(), {
+      loading: "Adding To Cart",
+      success: "Product added To Cart",
+      error: "Failed to Add Product to cart",
+    });
+    dispatch(cartActions.addToCart({ product: products, quantity: qty }));
+  };
 
   return (
     <>
@@ -133,7 +173,7 @@ const ProductDetails: React.FC<Props> = ({ products }) => {
           </div>
           {/* cart */}
           <div className='flex items-center gap-4'>
-            <Button onClick={addToCart} className='text-sm px-5 gap-0 py-0'>
+            <Button onClick={addtoCart} className='text-sm px-5 gap-0 py-0'>
               <CgShoppingCart className='mr-2  ' size={20} />
               Add to Cart
             </Button>

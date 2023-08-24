@@ -9,11 +9,20 @@ import MobileMenu from "./MobileMenu";
 
 import { CgShoppingCart } from "react-icons/cg";
 
-import { useAppSelector } from "@/redux/store";
+import { useAppDispatch, useAppSelector } from "@/redux/store";
+import { UserButton } from "@clerk/nextjs";
 
+import { fetchData } from "@/redux/features/cartSlice";
+import { useEffect } from "react";
 
-const Header = () => {
+const Header = ({ userId }: { userId: string }) => {
   const totalItems = useAppSelector((state) => state.cart.totalQuantity);
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    dispatch(fetchData(userId)); // Dispatch the fetchData action with the user id
+  }, [dispatch, userId]);
+
 
   return (
     <header className='w-full'>
@@ -30,11 +39,12 @@ const Header = () => {
         </div>
         <Navbar />
         <SearchBar />
+        <UserButton afterSignOutUrl='/' />
         <Link href='/cart'>
           <button className='hidden lg:flex bg-[#F1F1F1] relative p-3 rounded-[50%] border-[none]'>
             <CgShoppingCart size={22} />
             <span className='absolute text-xs text-[#eee] bg-[#f02d34] w-[18px] h-[18px] text-center font-semibold rounded-[50%] right-[5px] top-0'>
-            {totalItems}
+              {totalItems}
             </span>
           </button>
         </Link>

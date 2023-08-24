@@ -3,6 +3,7 @@ import { Sora } from "next/font/google";
 import Header from "@/components/view/Header/Header";
 import Footer from "@/components/view/Footer";
 import ReduxProvider from "@/components/utils/ReduxProvider";
+import { ClerkProvider ,auth } from "@clerk/nextjs";
 
 const sora = Sora({ subsets: ["latin"] });
 
@@ -15,16 +16,21 @@ export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
-}) {
+  }) {
+  
+  const {userId} = auth()
+  
   return (
-    <ReduxProvider>
-      <html lang='en'>
-        <body className={sora.className}>
-          <Header />
-          <main>{children}</main>
-          <Footer />
-        </body>
-      </html>
-    </ReduxProvider>
+    <ClerkProvider>
+      <ReduxProvider>
+        <html lang='en'>
+          <body className={sora.className}>
+            <Header userId={userId as string} />
+            <main>{children}</main>
+            <Footer />
+          </body>
+        </html>
+      </ReduxProvider>
+    </ClerkProvider>
   );
 }
