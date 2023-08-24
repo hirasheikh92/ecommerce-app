@@ -34,7 +34,27 @@ const ProductDetails: React.FC<Props> = ({ products }) => {
     toast.success(`${qty} ${title} added to Cart`, {
       position: "top-center",
     });
-  function addToCart() {
+
+  const handleAddToCart = async () => {
+    const res = await fetch(`/api/cart`, {
+      method: "POST",
+      body: JSON.stringify({
+        product_id: products._id,
+        quantity: qty,
+        image: urlForImage(products.image).url(),
+        price: products.price,
+        product_name: products.name,
+        total_price: products.price * qty,
+      }),
+    });
+  };
+
+  async function addToCart() {
+    toast.promise(handleAddToCart(), {
+      loading: "Adding data to cart",
+      success: "Data added to cart",
+      error: "error data to cart",
+    });
     dispatch(
       cartActions.addToCart({
         product: products,
