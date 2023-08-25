@@ -2,6 +2,7 @@
 
 import StartShopping from "@/components/StartShopping";
 import CartItemCard from "@/components/view/CartItemCard";
+import StripeCheckOutButton from "@/components/view/CheckOut";
 import Wrapper from "@/components/view/Wrapper";
 import { useAppSelector } from "@/redux/store";
 import React from "react";
@@ -44,7 +45,7 @@ const Cart = () => {
                 </div>
               </div>
               <div>
-                {/* <StripeCheckOutButton products={cartItems} /> */}
+                <StripeCheckOutButton products={cartItems} />
               </div>
             </div>
           </div>
