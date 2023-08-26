@@ -21,17 +21,14 @@ const CartItemCard = ({ cartItem }: Props) => {
 
     try {
       if (newQty) {
-        const res = await fetch(
-          `/api/cart`,
-          {
-            method: "PUT",
-            body: JSON.stringify({
-              product_id: cartItem._id,
-              quantity: newQty,
-              price: newPrice,
-            }),
-          }
-        );
+        const res = await fetch(`/api/cart`, {
+          method: "PUT",
+          body: JSON.stringify({
+            product_id: cartItem._id,
+            quantity: newQty,
+            price: newPrice,
+          }),
+        });
         if (!res.ok) {
           throw new Error("Failed to update data");
         }
@@ -67,7 +64,7 @@ const CartItemCard = ({ cartItem }: Props) => {
         error: "Failed to Decrease quantity",
       });
       setQty(qty - 1);
-      dispatch(cartActions.decrementCartProduct(cartItem._id));
+      dispatch(cartActions.removeFromCart(cartItem._id));
     }
   };
 
@@ -79,7 +76,6 @@ const CartItemCard = ({ cartItem }: Props) => {
     });
     dispatch(cartActions.removeProduct(cartItem._id));
   };
-
 
   return (
     <div className='flex flex-col sm:flex-row items-center justify-center w-full px-5 py-7 gap-5 border-b border-gray-300 '>
@@ -96,9 +92,7 @@ const CartItemCard = ({ cartItem }: Props) => {
       <div className='flex flex-col justify-between items-start w-full'>
         <div className='flex justify-between items-center w-80 sm:w-full flex-initial'>
           <h4>{cartItem.name}</h4>
-          <button
-            onClick={rmProduct}
-          >
+          <button onClick={rmProduct}>
             <BsTrash size={25} className='cursor-pointer' />
           </button>
         </div>
@@ -112,14 +106,14 @@ const CartItemCard = ({ cartItem }: Props) => {
           <div className='flex justify-center items-center gap-5 text-2xl font-bold mt-8'>
             <p>Quantity:</p>
             <button
-                onClick={decreament}
+              onClick={decreament}
               className='flex justify-center items-center w-10 h-10 border border-gray-700 rounded-full'
             >
               -
             </button>
             {qty}
             <button
-                onClick={increament}
+              onClick={increament}
               className='flex justify-center items-center w-10 h-10 border border-gray-700 rounded-full'
             >
               +
